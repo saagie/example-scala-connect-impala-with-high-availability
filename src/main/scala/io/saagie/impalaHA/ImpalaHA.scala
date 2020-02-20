@@ -18,8 +18,9 @@ object ImpalaHA {
   def get_all_active_datanode(list_datanodes: Seq[String], user: String, pwd: String, databaseName: String): Seq[String] = {
     val JDBC_DRIVER_NAME = "org.apache.hive.jdbc.HiveDriver"
     Class.forName(JDBC_DRIVER_NAME)
-    list_datanodes.map(dn => connection_dn(dn, user, pwd, databaseName) match {
-      case Success(value) => dn
+    list_datanodes.flatMap(dn => connection_dn(dn, user, pwd, databaseName) match {
+      case Success(value) => Some(dn)
+      case Failure(e) => None
     })
   }
 

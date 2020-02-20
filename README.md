@@ -2,6 +2,7 @@ Connect to Impala with High availability
 =================
 
 An example to show how to connect to Impala with a random active datanode.
+Tutorial: https://saagie.zendesk.com/hc/en-us/articles/360011528840-Impala-with-high-availability
 
 ## Usage in Saagie
 

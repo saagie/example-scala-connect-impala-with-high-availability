@@ -36,12 +36,12 @@ val pwd = sys.get("MY_PWD")
 val databaseName = "default"
 
 // Show all available datanodes
-val url = get_all_active_datanode(dn_list,user, pwd, databaseName)
+val url = ImpalaHA.get_all_active_datanode(dn_list,user, pwd, databaseName)
 logger.info("URL available: ")
 url.foreach(logger.info)
 
 // Set-up a connection to a random active datanode 
-val con = random_node_connect(dn_list,user, pwd, databaseName)
+val con = ImpalaHA.random_node_connect(dn_list,user, pwd, databaseName)
 val stmt = con.createStatement()
 
 // Execute a show tables query and show the result
